@@ -1,0 +1,783 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body class="bg-img">
+  <nav class="flex fixed w-full text-amber-200 bg-gradient-to-b from-amber-500 to-amber-700 z-10 ">
+    <!-- small screen navigatiion -->
+    <div class="flex md:hidden">
+      <div x-data="{ slideOut: false }" class="block">
+        <button @click="slideOut = !slideOut" class="mt-1 px-2 bg-gradient-to-b from-amber-500 to-amber-700">
+          <svg width="60px" height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 17H20M4 12H20M4 7H20" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div x-show="slideOut" x-transition.opacity class="fixed inset-0 bg-black/25">
+        </div>
+        <div x-show="slideOut" x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+          x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+          x-transition:leave-end="-translate-x-full" @click.outside="slideOut = false"
+          class="fixed inset-y-0 bg-white left-0 z-50 max-w-fit menu-color overflow-auto">
+          <div class="flex flex-col md:px-10 xl:px-14 leading-10 xl:leading-12 nav-text-color text-lg xl:text-xl">
+            <div class="flex">
+              <button @click="slideOut = false" aria-label="Close menu"
+                class="px-2 bg-gradient-to-b from-amber-500 to-amber-700" type="button">
+                <svg width="60px" height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 17H20M4 12H20M4 7H20" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <a href="#" class="flex flex-1">
+                <img src="img/nav_sm.png" alt="" class="">
+              </a>
+            </div>
+
+            <div></div>
+
+            <a href="" @click="slideOut = false" class="px-2 hover:text-white hover:font-semibold">
+              <button
+                class="flex items-center w-full px-2 py-0.5 my-1.5 text-white bg-gradient-to-b from-amber-500 to-amber-700">
+                <svg class="h-6 fill-white pr-2" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M768 640v99.6c0 8.1-2.1 14.2-8.2 20.3-6.2 6.2-12.1 8.1-20.2 8.1-120.1-2.1-260.1-40.3-351.6-131.8S258.1 404.5 256 284.4c0-8.1 2-14.1 8.1-20.2s12.1-8.2 20.3-8.2H384l25.6 153.6-47.8 62.1c14.2 40.3 42.7 83.1 75.1 115.6 32.5 32.5 75.1 60.7 115.3 74.9l62.1-47.8L768 640z" />
+                </svg>
+                <p>
+                  Contact us >>
+                </p>
+              </button>
+            </a>
+            <a href="" @click="slideOut=false" class="px-2 hover:text-white hover:font-semibold">
+              <div class="search-container relative">
+                <form action="/action_page.php">
+                  <input type="text" placeholder="Search" name="search" class="w-full h-10">
+                  <button type="submit" class="absolute top-0 right-0"><svg class="h-5 fill-gray-400 mt-1" version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280.000000 1258.000000"
+                    preserveAspectRatio="xMidYMid meet">
+                    <metadata>
+                      Created by potrace 1.15, written by Peter Selinger 2001-2017
+                    </metadata>
+                    <g transform="translate(0.000000,1258.000000) scale(0.100000,-0.100000)" stroke="none">
+                      <path d="M8450 12560 c-74 -4 -187 -15 -250 -24 -63 -9 -135 -19 -160 -21 -25
+                                      -3 -74 -13 -110 -21 -36 -9 -76 -18 -90 -20 -168 -29 -502 -135 -736 -235
+                                      -110 -46 -337 -158 -393 -193 -20 -13 -70 -43 -111 -67 -165 -96 -439 -294
+                                      -560 -403 -120 -108 -433 -430 -490 -502 -8 -11 -40 -51 -70 -89 -31 -39 -70
+                                      -90 -86 -115 -17 -25 -60 -88 -96 -140 -57 -83 -248 -409 -248 -423 0 -3 -17
+                                      -43 -39 -89 -131 -282 -195 -464 -273 -771 -37 -149 -52 -235 -78 -442 -27
+                                      -226 -40 -392 -40 -525 0 -162 37 -585 60 -690 6 -25 17 -79 25 -120 24 -120
+                                      52 -241 70 -300 59 -196 111 -344 164 -465 10 -22 24 -56 31 -75 57 -145 257
+                                      -497 398 -701 177 -255 523 -628 736 -794 22 -16 64 -51 95 -76 143 -118 462
+                                      -319 676 -426 266 -134 630 -267 865 -318 8 -2 44 -10 80 -19 36 -8 79 -17 95
+                                      -20 122 -22 217 -37 236 -38 13 0 49 -5 79 -10 135 -22 476 -33 677 -21 109 6
+                                      221 14 248 18 28 4 70 9 95 11 95 10 225 34 425 79 70 16 228 60 270 75 28 10
+                                      68 24 90 31 41 12 209 77 280 108 22 10 56 24 75 32 63 24 302 149 409 214
+                                      148 90 377 247 435 300 6 6 36 30 66 53 159 124 426 390 550 548 17 21 48 59
+                                      68 83 20 24 63 80 94 125 31 45 65 92 75 106 37 49 123 189 123 199 0 6 5 11
+                                      10 11 6 0 10 4 10 10 0 5 15 33 33 62 32 50 187 358 187 371 0 4 11 30 24 59
+                                      13 29 38 94 56 143 18 50 37 99 41 110 16 34 81 260 110 380 74 300 124 796
+                                      107 1065 -14 233 -29 414 -38 460 -5 25 -14 79 -20 120 -6 41 -20 113 -31 160
+                                      -11 47 -29 123 -40 170 -18 74 -44 161 -94 315 -19 57 -63 172 -85 220 -10 22
+                                      -28 63 -40 90 -167 379 -365 691 -648 1025 -63 75 -332 344 -411 411 -35 30
+                                      -69 59 -75 64 -29 26 -127 101 -254 192 -102 72 -407 255 -507 303 -38 18 -97
+                                      46 -130 62 -194 96 -627 243 -836 283 -44 9 -134 26 -154 30 -58 12 -88 16
+                                      -175 26 -52 5 -129 15 -170 20 -101 14 -464 19 -630 9z m540 -505 c200 -18
+                                      323 -36 478 -71 1540 -345 2671 -1637 2803 -3203 15 -177 6 -601 -15 -755 -57
+                                      -401 -159 -743 -325 -1091 -428 -895 -1240 -1594 -2186 -1880 -501 -151 -1044
+                                      -193 -1555 -119 -1437 208 -2608 1262 -2965 2669 -83 328 -109 568 -102 950 7
+                                      348 38 586 113 863 225 830 748 1560 1466 2043 664 448 1501 665 2288 594z" />
+                      <path d="M8010 11380 c-8 -5 -10 -10 -5 -10 6 0 17 5 25 10 8 5 11 10 5 10 -5
+                                      0 -17 -5 -25 -10z" />
+                      <path d="M7915 11349 c-54 -22 -75 -36 -35 -24 37 12 107 44 95 44 -5 0 -32
+                                      -9 -60 -20z" />
+                      <path d="M7810 11305 c-14 -8 -20 -14 -15 -14 6 0 21 6 35 14 14 8 21 14 15
+                                      14 -5 0 -21 -6 -35 -14z" />
+                      <path d="M7760 11280 c-9 -6 -10 -10 -3 -10 6 0 15 5 18 10 8 12 4 12 -15 0z" />
+                      <path d="M7648 11224 c-38 -20 -36 -28 2 -9 17 9 30 18 30 20 0 7 -1 6 -32
+                                      -11z" />
+                      <path d="M5180 9086 c0 -2 8 -10 18 -17 15 -13 16 -12 3 4 -13 16 -21 21 -21
+                                      13z" />
+                      <path d="M4953 6236 c-154 -50 -243 -170 -243 -326 0 -91 28 -164 88 -231 l46
+                                      -52 -134 -128 c-74 -71 -138 -128 -142 -129 -4 0 -45 39 -92 88 l-85 87 -178
+                                      -177 c-98 -97 -1008 -997 -2021 -2001 l-1844 -1824 -50 -6 c-251 -30 -383
+                                      -335 -231 -534 19 -25 222 -246 450 -489 375 -401 422 -447 477 -474 228 -112
+                                      487 46 487 297 l0 62 1497 1482 c823 816 1729 1713 2012 1996 l515 513 -97 97
+                                      -97 98 135 126 135 126 37 -35 c64 -61 134 -87 232 -87 71 0 94 4 141 26 194
+                                      91 258 340 131 507 -19 26 -137 155 -261 287 -125 132 -311 331 -415 443 -162
+                                      173 -198 207 -251 233 -74 36 -176 47 -242 25z" />
+                    </g>
+                  </svg></i></button>
+                </form>
+              </div>
+            </a>
+
+            <div class="mt-2 py-2 divide-y border-t text-gray-600 border-gray-200 bg-white">
+              <a href="" @click="slideOut = false"
+                class="group flex justify-between px-2 focus:bg-amber-500 hover:font-semibold">
+                ABOUT OHIO VALLEY
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+              </a>
+              <a href="" @click="slideOut = false"
+                class="group flex justify-between px-2 focus:bg-amber-500 hover:font-semibold">
+                SURGICAL HOSPITAL
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+              </a>
+              <a href="" @click="slideOut = false"
+                class="group flex justify-between px-2 focus:bg-amber-500 hover:font-semibold">
+                PROGRAMS & SERVICES
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+              </a>
+              <a href="" @click.prevent
+                class="dropdown rotate-me group flex justify-between px-2 focus:bg-amber-500 hover:font-semibold">
+                OUR PHYSICIANS
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+                    <ul class="dropdown__menu w-full divide-y bg-amber-100" id="budget-dropdown">
+                      <li @click="slideOut = false">Link Here</li>
+                      <li @click="slideOut = false">Link Here</li>
+                      <li @click="slideOut = false">Link Here</li>
+                    </ul>
+              </a>
+              <a href="" @click="slideOut = false"
+                class="group flex justify-between px-2 focus:bg-amber-500 hover:font-semibold">
+                PATIENT & VISITOR INFO
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+              </a>
+              <a href="" @click="slideOut = false"
+                class="group flex justify-between px-2 focus:bg-amber-500 hover:font-semibold">
+                PATIENT EDUCATION
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+              </a>
+              <a href="" @click="slideOut = false"
+                class="group flex justify-between px-2 bg-gray-400 focus:bg-amber-500 hover:font-semibold">
+                MAPS & DIRECTIONS
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+              </a>
+              <a href="" @click="slideOut = false"
+                class="group flex justify-between px-2 bg-gray-400 focus:bg-amber-500 hover:font-semibold">
+                FOR PATIENTS
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+              </a>
+              <a href="" @click="slideOut = false"
+                class="group flex justify-between px-2 bg-gray-400 focus:bg-amber-500 hover:font-semibold">
+                PHYSICIAN OFFICE LOGIN
+                <svg width="18px" height="18px" viewBox="0 0 1024 1024" class="icon self-center" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#858482" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="flex flex-1">
+        <img src="img/nav_sm.png" alt="" class="">
+      </a>
+    </div>
+
+    <!-- tablet + desktop navigation  -->
+    <div class="hidden md:flex justify-between w-full md:mx-20 xl:mx-40 2xl:mx-80 x-80  pr-2">
+      <a href="#" class="flex mb-4 custom-shadow">
+        <img src="img/logo_ok.png" alt="" class="rounded-b-sm">
+      </a>
+      <div class="relative flex items-end divide-x divide-amber-200 ">
+        <a href="#" class="mb-2 md:px-1 lg:px-3 text-sm tracking-tight hover:bg-amber-200 hover:text-amber-500">
+          ABOUT <br> OHIO VALLEY
+        </a>
+        <a href="#" class="mb-2 md:px-1 lg:px-3 text-sm tracking-tight  hover:bg-amber-200 hover:text-amber-500">
+          SURGICAL <br> HOSPITAL
+        </a>
+        <a href="#" class="mb-2 md:px-1 lg:px-3 text-sm tracking-tight hover:bg-amber-200 hover:text-amber-500">
+          PROGRAMS & <br> SERVICES
+        </a>
+        <a href="#" class="dropdown mb-2 md:px-1 lg:px-3 text-sm tracking-tight hover:bg-amber-200 hover:text-amber-500">
+          OUR <br> PHYSICIANS
+        </a>
+        <a href="#" class="mb-2 md:px-1 lg:px-3 text-sm tracking-tight hover:bg-amber-200 hover:text-amber-500">
+          PATIENTS & <br> VISITOR INFO
+        </a>
+        <a href="#" class="mb-2 sm:px-1 lg:px-3 text-sm tracking-tight hover:bg-amber-200 hover:text-amber-500">
+          PATIENT <br> EDUCATION
+        </a>
+
+        <div
+          class="hidden xl:block absolute right-0 top-0 drop-shadow-lg bg-slate-100 text-slate-500 divide-x divide-slate-500">
+          <a href="##" class="mb-2 px-1 text-sm tracking-tight">
+            <svg class="inline h-6 fill-slate-500" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M768 640v99.6c0 8.1-2.1 14.2-8.2 20.3-6.2 6.2-12.1 8.1-20.2 8.1-120.1-2.1-260.1-40.3-351.6-131.8S258.1 404.5 256 284.4c0-8.1 2-14.1 8.1-20.2s12.1-8.2 20.3-8.2H384l25.6 153.6-47.8 62.1c14.2 40.3 42.7 83.1 75.1 115.6 32.5 32.5 75.1 60.7 115.3 74.9l62.1-47.8L768 640z" />
+            </svg>
+            937.521.3910
+          </a>
+          <a href="#" class="mb-2 px-1 text-sm tracking-tight">
+            Maps & Directions
+          </a>
+          <a href="#" class="mb-2 px-1 text-sm tracking-tight">
+            For Patients
+          </a>
+          <a href="#" class="mb-2 px-1 text-sm tracking-tight">
+            Physician Office Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="block sm:mx-0 md:mx-20 xl:mx-40 2xl:mx-80">
+    -->
+    <!-- first carousel -->
+    <section class="hidden md:block carousel-inner">
+      <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
+        checked="checked">
+      <div class="flex carousel-item">
+        <img src="img/carrousel.png" class="flex-1">
+        <div class="absolute md:top-20 md:left-10 xl:top-40 xl:left-20">
+          <!-- <div class="flex items-center"> -->
+          <h1 class="text-base md:text-4xl md:mt-10 lg:mt-0  lg:text-6xl text-slate-500">
+            Surgical Excellence is <br> More than Skin Deep
+          </h1>
+          <button class="mt-3 ml-1 px-2 text-white bg-gradient-to-b from-amber-500 to-amber-700">
+            Learn more >>
+          </button>
+        </div>
+      </div>
+      <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+      <div class="flex carousel-item">
+        <img src="img/car-2.jpg" class="flex-1">
+        <div class="absolute top-40 left-20">
+          <h1 class="text-base md:text-4xl md:mt-10 lg:mt-0  lg:text-6xl text-slate-500">
+            Happy Patients <br> Testimonials
+          </h1>
+          <button class="px-2 mt-3 ml-1 text-white bg-gradient-to-b from-amber-500 to-amber-700">
+            Learn more >>
+          </button>
+        </div>
+      </div>
+      <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+      <div class="flex carousel-item">
+        <img src="img/car-3.jpg" class="flex-1">
+        <div class="absolute top-40 left-20">
+          <h1 class="text-base md:text-4xl md:mt-10 lg:mt-0 lg:text-6xl text-slate-500">
+            Your Care <br> is Our Priority
+          </h1>
+          <button class="px-2 mt-3 ml-1 text-white bg-gradient-to-b from-amber-500 to-amber-700">
+            Learn more >>
+          </button>
+        </div>
+      </div>
+
+      <!-- carousel controls -->
+      <label for="carousel-3" class="carousel-control prev control-1">‹</label>
+      <label for="carousel-2" class="carousel-control next control-1">›</label>
+      <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+      <label for="carousel-3" class="carousel-control next control-2">›</label>
+      <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+      <label for="carousel-1" class="carousel-control next control-3">›</label>
+      <ol class="carousel-indicators">
+        <li>
+          <label for="carousel-1" class="carousel-bullet">•</label>
+        </li>
+        <li>
+          <label for="carousel-2" class="carousel-bullet">•</label>
+        </li>
+        <li>
+          <label for="carousel-3" class="carousel-bullet">•</label>
+        </li>
+      </ol>
+    </section>
+
+    <!-- second carousel -->
+    <section class="hidden relative md:grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-x-2 mt-3 text-slate-500">
+      <div class="card flex flex-col">
+        <img src="img/card_1.jpg" alt="hospital-doctors">
+        <div class="container p-6 bg-white flex-1">
+          <h4 class="text-amber-500 font-semibold text-xl">
+            Surgical Procedures
+          </h4>
+          <p class="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+          </p>
+          <a href="#" class="text-black text-xs">
+            Read More >>
+          </a>
+        </div>
+      </div>
+      <div class="card flex flex-col">
+        <div class="relative">
+          <img src="img/card_2.jpg" alt="hospital-patients">
+          <button class="center">
+            <svg class="h-10 fill-amber-500" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 58 58" xml:space="preserve">
+              <circle style="fill:#FFFFFF;" cx="29" cy="29" r="29" />
+              <g>
+                <polygon style="fill:#f59e0b;" points="44,29 22,44 22,29.273 22,14 	" />
+                <path style="fill:#f59e0b;" d="M22,45c-0.16,0-0.321-0.038-0.467-0.116C21.205,44.711,21,44.371,21,44V14
+                c0-0.371,0.205-0.711,0.533-0.884c0.328-0.174,0.724-0.15,1.031,0.058l22,15C44.836,28.36,45,28.669,45,29s-0.164,0.64-0.437,0.826
+                l-22,15C22.394,44.941,22.197,45,22,45z M23,15.893v26.215L42.225,29L23,15.893z" />
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="container p-6 bg-white flex-1">
+          <h4 class="text-amber-500 font-semibold text-xl">
+            Happy Patients Come in All Sizes
+          </h4>
+          <p class="text-sm">
+            Lorem ipsum dolor sit amet.
+          </p>
+          <a href="#" class="text-black text-xs">
+            Watch their story >>
+          </a>
+        </div>
+      </div>
+      <div class="md:hidden card xl:flex flex-col">
+        <img src="img/card_3.jpg" alt="hospital-patients">
+        <div class="container p-6 bg-white flex-1">
+          <h4 class="text-amber-500 font-semibold text-xl">
+            99% Patient Satisfaction
+          </h4>
+          <p class="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp.
+          </p>
+          <a href="#" class="text-black text-xs">
+            Read More >>
+          </a>
+        </div>
+      </div>
+      <div class="card flex flex-col">
+        <div class="relative">
+          <img src="img/card_4.jpg" alt="hospital-patients">
+          <button class="center col-span-2">
+            <svg class="h-8 fill-amber-500" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 58 58" xml:space="preserve">
+              <circle style="fill:#FFFFFF;" cx="29" cy="29" r="29" />
+              <g>
+                <polygon style="fill:#f59e0b;" points="44,29 22,44 22,29.273 22,14 	" />
+                <path style="fill:#f59e0b;" d="M22,45c-0.16,0-0.321-0.038-0.467-0.116C21.205,44.711,21,44.371,21,44V14
+                        c0-0.371,0.205-0.711,0.533-0.884c0.328-0.174,0.724-0.15,1.031,0.058l22,15C44.836,28.36,45,28.669,45,29s-0.164,0.64-0.437,0.826
+                        l-22,15C22.394,44.941,22.197,45,22,45z M23,15.893v26.215L42.225,29L23,15.893z" />
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="container p-6 bg-white flex-1 relative">
+          <svg version="1.2" fill="#f59e0b" class="-my-7 center-me" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 28 28" width="34" height="34">
+            <path d="m21 3h-18l9 18z" />
+          </svg>
+          <h4 class="text-amber-500 pt-6 font-semibold text-xl">
+            We Found Answers Here
+          </h4>
+          <p class="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
+          </p>
+          <a href="#" class="text-black text-xs">
+            Watch their story >>
+          </a>
+        </div>
+      </div>
+
+      <button id="prev" class=" bg-amber-500 hover:bg-white carousel-control block prev">
+        <svg class="center-me" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path class="absolute" fill="#FFF" d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+        </svg>
+      </button>
+      <button id="next" class=" bg-amber-500 hover:bg-white carousel-control block next">
+        <svg class="center-me" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path class="absolute" fill="#FFF" d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+        </svg>
+      </button>
+      <div class="hidden md:flex">
+        <ol class="carousel-indicators-b inline">
+          <li class="carousel-bullet checked">•
+          </li>
+          <li class="carousel-bullet">•
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-8 my-2 md:my-3 mt-12 md:mt-2 bg-transparent">
+      <div class="xl:col-span-2 md:mr-2 sm:mr-0">
+        <button
+          class="flex items-center w-full px-2 py-0.5 my-1.5 text-white bg-gradient-to-b from-amber-500 to-amber-700">
+          <svg class="h-5 fill-white pr-3" version="1.0" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1280.000000 1258.000000" preserveAspectRatio="xMidYMid meet">
+            <metadata>
+              Created by potrace 1.15, written by Peter Selinger 2001-2017
+            </metadata>
+            <g transform="translate(0.000000,1258.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path d="M8450 12560 c-74 -4 -187 -15 -250 -24 -63 -9 -135 -19 -160 -21 -25
+                    -3 -74 -13 -110 -21 -36 -9 -76 -18 -90 -20 -168 -29 -502 -135 -736 -235
+                    -110 -46 -337 -158 -393 -193 -20 -13 -70 -43 -111 -67 -165 -96 -439 -294
+                    -560 -403 -120 -108 -433 -430 -490 -502 -8 -11 -40 -51 -70 -89 -31 -39 -70
+                    -90 -86 -115 -17 -25 -60 -88 -96 -140 -57 -83 -248 -409 -248 -423 0 -3 -17
+                    -43 -39 -89 -131 -282 -195 -464 -273 -771 -37 -149 -52 -235 -78 -442 -27
+                    -226 -40 -392 -40 -525 0 -162 37 -585 60 -690 6 -25 17 -79 25 -120 24 -120
+                    52 -241 70 -300 59 -196 111 -344 164 -465 10 -22 24 -56 31 -75 57 -145 257
+                    -497 398 -701 177 -255 523 -628 736 -794 22 -16 64 -51 95 -76 143 -118 462
+                    -319 676 -426 266 -134 630 -267 865 -318 8 -2 44 -10 80 -19 36 -8 79 -17 95
+                    -20 122 -22 217 -37 236 -38 13 0 49 -5 79 -10 135 -22 476 -33 677 -21 109 6
+                    221 14 248 18 28 4 70 9 95 11 95 10 225 34 425 79 70 16 228 60 270 75 28 10
+                    68 24 90 31 41 12 209 77 280 108 22 10 56 24 75 32 63 24 302 149 409 214
+                    148 90 377 247 435 300 6 6 36 30 66 53 159 124 426 390 550 548 17 21 48 59
+                    68 83 20 24 63 80 94 125 31 45 65 92 75 106 37 49 123 189 123 199 0 6 5 11
+                    10 11 6 0 10 4 10 10 0 5 15 33 33 62 32 50 187 358 187 371 0 4 11 30 24 59
+                    13 29 38 94 56 143 18 50 37 99 41 110 16 34 81 260 110 380 74 300 124 796
+                    107 1065 -14 233 -29 414 -38 460 -5 25 -14 79 -20 120 -6 41 -20 113 -31 160
+                    -11 47 -29 123 -40 170 -18 74 -44 161 -94 315 -19 57 -63 172 -85 220 -10 22
+                    -28 63 -40 90 -167 379 -365 691 -648 1025 -63 75 -332 344 -411 411 -35 30
+                    -69 59 -75 64 -29 26 -127 101 -254 192 -102 72 -407 255 -507 303 -38 18 -97
+                    46 -130 62 -194 96 -627 243 -836 283 -44 9 -134 26 -154 30 -58 12 -88 16
+                    -175 26 -52 5 -129 15 -170 20 -101 14 -464 19 -630 9z m540 -505 c200 -18
+                    323 -36 478 -71 1540 -345 2671 -1637 2803 -3203 15 -177 6 -601 -15 -755 -57
+                    -401 -159 -743 -325 -1091 -428 -895 -1240 -1594 -2186 -1880 -501 -151 -1044
+                    -193 -1555 -119 -1437 208 -2608 1262 -2965 2669 -83 328 -109 568 -102 950 7
+                    348 38 586 113 863 225 830 748 1560 1466 2043 664 448 1501 665 2288 594z" />
+              <path d="M8010 11380 c-8 -5 -10 -10 -5 -10 6 0 17 5 25 10 8 5 11 10 5 10 -5
+                    0 -17 -5 -25 -10z" />
+              <path d="M7915 11349 c-54 -22 -75 -36 -35 -24 37 12 107 44 95 44 -5 0 -32
+                    -9 -60 -20z" />
+              <path d="M7810 11305 c-14 -8 -20 -14 -15 -14 6 0 21 6 35 14 14 8 21 14 15
+                    14 -5 0 -21 -6 -35 -14z" />
+              <path d="M7760 11280 c-9 -6 -10 -10 -3 -10 6 0 15 5 18 10 8 12 4 12 -15 0z" />
+              <path d="M7648 11224 c-38 -20 -36 -28 2 -9 17 9 30 18 30 20 0 7 -1 6 -32
+                    -11z" />
+              <path d="M5180 9086 c0 -2 8 -10 18 -17 15 -13 16 -12 3 4 -13 16 -21 21 -21
+                    13z" />
+              <path d="M4953 6236 c-154 -50 -243 -170 -243 -326 0 -91 28 -164 88 -231 l46
+                    -52 -134 -128 c-74 -71 -138 -128 -142 -129 -4 0 -45 39 -92 88 l-85 87 -178
+                    -177 c-98 -97 -1008 -997 -2021 -2001 l-1844 -1824 -50 -6 c-251 -30 -383
+                    -335 -231 -534 19 -25 222 -246 450 -489 375 -401 422 -447 477 -474 228 -112
+                    487 46 487 297 l0 62 1497 1482 c823 816 1729 1713 2012 1996 l515 513 -97 97
+                    -97 98 135 126 135 126 37 -35 c64 -61 134 -87 232 -87 71 0 94 4 141 26 194
+                    91 258 340 131 507 -19 26 -137 155 -261 287 -125 132 -311 331 -415 443 -162
+                    173 -198 207 -251 233 -74 36 -176 47 -242 25z" />
+            </g>
+          </svg>
+          <p>
+            Find a physician >>
+          </p>
+        </button>
+        <button
+          class="flex items-center w-full px-2 py-0.5 my-1.5 text-white bg-gradient-to-b from-amber-500 to-amber-700">
+          <svg class="h-5 fill-white pr-3" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+            <g>
+              <path class="st0"
+                d="M151.828,74.846c3.703-2.578,5.891-6.797,5.891-11.313V13.799c0-4.5-2.188-8.734-5.891-11.313
+          		c-3.688-2.578-8.422-3.203-12.656-1.641l-30.125,11.047V65.44l30.125,11.047C143.406,78.049,148.141,77.424,151.828,74.846z" />
+              <path class="st0" d="M276.516,74.846c3.703,2.578,8.422,3.203,12.656,1.656l30.141-11.047V11.893L289.172,0.846
+          		c-4.234-1.563-8.953-0.938-12.656,1.641c-3.688,2.578-5.891,6.813-5.891,11.313v49.734
+          		C270.625,68.049,272.828,72.284,276.516,74.846z" />
+              <path class="st0" d="M460,260.659c-12.953-12.969-30.969-21.016-50.75-21.016s-37.781,8.047-50.75,21.016
+          		c-12.969,12.953-21.016,30.969-21.016,50.75s8.047,37.797,21.016,50.75c0.328,0.313,0.688,0.594,1.016,0.922l-43,77.843
+          		c-6.594,11.297-14.641,19.172-22.922,24.25c-8.297,5.094-16.844,7.359-24.531,7.359c-4.859,0-9.391-0.906-13.422-2.563
+          		c-6.078-2.516-11.125-6.594-15.078-12.953c-3.922-6.375-6.766-15.328-6.781-27.813c0-33.515,0-70.703,0-110.984
+          		c8.297-2.063,15.797-5.25,22.234-9.109c5.625-3.359,10.516-7.203,14.688-11.25c4.172-4.063,7.625-8.328,10.375-12.781
+          		c0.078-0.141,0.641-1,1.422-2.125c1.5-2.141,3.891-5.422,6.844-9.469c10.438-14.188,28.203-37.766,45.938-62.313
+          		c8.891-12.281,17.781-24.813,25.813-36.656c8.031-11.828,15.203-22.922,20.766-32.578c9.672-16.859,15.219-34.906,15.25-52.766
+          		c0-9.125-1.5-18.234-4.859-26.813c-2.516-6.438-6.094-12.563-10.719-17.984c-6.922-8.172-16.172-14.641-26.922-18.859
+          		c-6.453-2.531-13.484-4.188-20.953-5.188v39.969c1.672,0.391,3.25,0.797,4.672,1.297c3.828,1.297,6.781,2.891,9.125,4.625
+          		c3.516,2.641,5.813,5.578,7.516,9.281c1.688,3.688,2.672,8.234,2.672,13.672c0.047,9.391-3.172,21.281-10,33.094
+          		c-5.781,10.063-14.547,23.422-24.406,37.672c-14.813,21.422-32.156,44.984-46.484,64.281c-7.156,9.656-13.563,18.25-18.563,25.047
+          		c-2.516,3.406-4.672,6.344-6.422,8.797c-0.891,1.234-1.672,2.344-2.359,3.359c-0.703,1.031-1.313,1.922-1.922,2.938
+          		c-0.828,1.344-2.313,3.266-4.313,5.203c-3,2.938-7.141,5.922-12.031,8.063c-4.906,2.141-10.547,3.531-17.094,3.547
+          		c-8.703-0.016-15.891-2.484-21.719-5.938c-2.891-1.734-5.406-3.719-7.406-5.672c-2-1.938-3.484-3.859-4.297-5.203
+          		c-0.828-1.328-1.641-2.516-2.656-3.984c-1.875-2.688-4.375-6.109-7.438-10.266c-10.672-14.516-28.25-37.875-45.734-62.047
+          		c-8.734-12.094-17.422-24.344-25.141-35.719c-7.703-11.344-14.469-21.844-19.203-30.078c-6.828-11.813-10.047-23.703-10-33.109
+          		c0-4.813,0.797-8.953,2.141-12.406c1.016-2.578,2.344-4.797,4.031-6.797c2.547-2.969,5.984-5.578,11.297-7.688
+          		c1.984-0.781,4.234-1.484,6.766-2.031V20.252c-6.172,0.813-12.063,2.078-17.563,3.953C69.75,26.69,63,30.159,57.109,34.534
+          		C48.25,41.081,41.469,49.69,37.188,59.174c-4.313,9.484-6.203,19.734-6.203,29.984c0.047,17.875,5.578,35.922,15.266,52.781
+          		c6.766,11.766,15.938,25.688,26.156,40.453c15.281,22.109,32.844,45.938,47.25,65.344c7.188,9.703,13.594,18.297,18.484,24.938
+          		c2.453,3.313,4.516,6.141,6.078,8.344c0.781,1.078,1.438,2.016,1.922,2.734c0.484,0.703,0.828,1.234,0.875,1.313
+          		c2.766,4.469,6.203,8.734,10.375,12.797c6.25,6.063,14.141,11.688,23.672,15.891c4.094,1.813,8.563,3.266,13.25,4.422
+          		c0,40.313,0,77.516,0,111.031c0,12.406,1.938,23.859,5.688,34.109c5.594,15.391,15.453,27.938,27.734,36.234
+          		c12.266,8.359,26.734,12.469,41.328,12.453c15.406,0,31.031-4.516,45.172-13.172c14.156-8.688,26.813-21.547,36.469-38.188
+          		l0.109-0.172l43.563-78.859c4.813,1,9.781,1.563,14.875,1.563c19.781,0,37.797-8.047,50.75-21.016
+          		c12.969-12.953,21.016-30.969,21.016-50.75S472.969,273.612,460,260.659z M444.781,346.924
+          		c-9.125,9.109-21.625,14.703-35.531,14.719c-13.906-0.016-26.406-5.609-35.516-14.719s-14.719-21.609-14.719-35.516
+          		s5.609-26.406,14.719-35.516s21.609-14.703,35.516-14.719c13.906,0.016,26.406,5.609,35.531,14.719
+          		c9.094,9.109,14.703,21.609,14.703,35.516S453.875,337.815,444.781,346.924z" />
+              <path class="st0" d="M419.516,286.252c-3.344-1.375-6.844-2.016-10.266-2.016c-10.719-0.016-20.844,6.375-25.156,16.906
+          		l9.969,4.063c2.594-6.359,8.719-10.203,15.188-10.203c2.063,0,4.156,0.375,6.188,1.203c6.375,2.609,10.219,8.734,10.219,15.203
+          		c0,2.063-0.375,4.156-1.219,6.203l9.969,4.063c1.375-3.344,2.031-6.844,2.016-10.266
+          		C436.438,300.706,430.047,290.549,419.516,286.252z" />
+            </g>
+          </svg>
+          <p>
+            Surgical specialties >>
+          </p>
+        </button>
+        <button
+          class="flex items-center  w-full px-2 py-0.5 my-1.5 text-white bg-gradient-to-b from-amber-500 to-amber-700">
+          <svg class="h-5 fill-white pr-3" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M800 416a288 288 0 1 0-576 0c0 118.144 94.528 272.128 288 456.576C705.472 688.128 800 534.144 800 416zM512 960C277.312 746.688 160 565.312 160 416a352 352 0 0 1 704 0c0 149.312-117.312 330.688-352 544z" />
+            <path
+              d="M512 448a64 64 0 1 0 0-128 64 64 0 0 0 0 128zm0 64a128 128 0 1 1 0-256 128 128 0 0 1 0 256zm345.6 192L960 960H672v-64H352v64H64l102.4-256h691.2zm-68.928 0H235.328l-76.8 192h706.944l-76.8-192z" />
+          </svg>
+          <p>
+            Maps and Directions >>
+          </p>
+        </button>
+        <button
+          class="flex items-center w-full px-2 py-0.5 my-1.5 text-white bg-gradient-to-b from-amber-500 to-amber-700">
+          <svg class="h-6 fill-white pr-2" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M768 640v99.6c0 8.1-2.1 14.2-8.2 20.3-6.2 6.2-12.1 8.1-20.2 8.1-120.1-2.1-260.1-40.3-351.6-131.8S258.1 404.5 256 284.4c0-8.1 2-14.1 8.1-20.2s12.1-8.2 20.3-8.2H384l25.6 153.6-47.8 62.1c14.2 40.3 42.7 83.1 75.1 115.6 32.5 32.5 75.1 60.7 115.3 74.9l62.1-47.8L768 640z" />
+          </svg>
+          <p>
+            Contact us >>
+          </p>
+        </button>
+      </div>
+      <div class="xl:col-span-3 bg-white mb-2 md:mb-0 md:bg-transparent px-10 md:px-0 md:mx-2 xl:mx-10 text-slate-500">
+        <h2 class="text-amber-500 font-semibold text-2xl">
+          Ohio Valley Surgical Hospital
+        </h2>
+        <p class="text-sm pt-1">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <div class="xl:col-span-3 bg-white md:bg-transparent px-10 md:px-0 text-slate-500 pr-8 md:ml-2 xl:ml-14">
+        <h2 class="text-amber-500 font-semibold text-2xl">
+          News and Highlights
+        </h2>
+        <div class="leading-3 text-xs pb-2 md:pb-0">
+          <p class="text-sm pt-1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt.
+          </p>
+          <a href="#" class="text-black cursor-pointer hover:text-white">
+            Read More >>
+          </a>
+
+          <p class="text-sm pt-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt.
+          </p>
+          <a href="#" class="pointer text-black hover:text-white cursor-pointer">
+            Read More >>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+  <footer class="w-full md:px-20 xl:px-40 2xl:px-80 px-10 shadow-me text-slate-400 bg-img-footer">
+    <div class="grid gap-x-7 gap-y-4 mt-12 mb-10">
+      <div class="box-1 hidden md:flex flex-1">
+        <img src="../new-site/img/footer-1.jpg" alt="mother-child">
+      </div>
+      <div class="box-2 flex flex-1">
+        <img src="../new-site/img/footer-2.jpg" class="sm:h-40 border-solid border-8" alt="map">
+      </div>
+      <div class="box-3 hidden md:block">
+        <!-- search bar -->
+        <div class="search-container relative">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search" name="search" class="w-full">
+            <button type="submit" class="absolute top-0 right-0"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="box-4">
+        <h4 class="text-amber-500 font-semibold text-xl">
+          Address
+        </h4>
+        <p class="">
+          100 W Main Street <br>
+          Springfield, Ohio 45502
+          877.708.9753
+        </p>
+        <a href="#" class="text-gray-300">
+          Directions >>
+        </a>
+      </div>
+      <div class="box-5">
+        <h4 class="text-amber-500 font-semibold text-xl">
+          Help is Here
+        </h4>
+        <ul>
+          <li>• Surgical Care</li>
+          <li>• Finding a Surgeon</li>
+          <li>• Getting to Ohio Valley</li>
+          <li>• Admission Information</li>
+          <li>• Common Forms</li>
+        </ul>
+      </div>
+      <div class="box-6">
+        <h4 class="text-amber-500 font-semibold pb-1 text-xl">
+          Connect With Care
+        </h4>
+        <!-- social media icons -->
+        <div class="flex gap-x-2">
+          <a href="#">
+            <svg fill="#666f80" height="26px" width="26px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-143 145 512 512" xml:space="preserve">
+              <g>
+                <path
+                  d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M272.8,560.7
+                		c-20.8,20.8-44.9,37.1-71.8,48.4c-27.8,11.8-57.4,17.7-88,17.7c-30.5,0-60.1-6-88-17.7c-26.9-11.4-51.1-27.7-71.8-48.4
+                		c-20.8-20.8-37.1-44.9-48.4-71.8C-107,461.1-113,431.5-113,401s6-60.1,17.7-88c11.4-26.9,27.7-51.1,48.4-71.8
+                		c20.9-20.8,45-37.1,71.9-48.5C52.9,181,82.5,175,113,175s60.1,6,88,17.7c26.9,11.4,51.1,27.7,71.8,48.4
+                		c20.8,20.8,37.1,44.9,48.4,71.8c11.8,27.8,17.7,57.4,17.7,88c0,30.5-6,60.1-17.7,88C309.8,515.8,293.5,540,272.8,560.7z" />
+                <path
+                  d="M146.8,313.7c10.3,0,21.3,3.2,21.3,3.2l6.6-39.2c0,0-14-4.8-47.4-4.8c-20.5,0-32.4,7.8-41.1,19.3
+                		c-8.2,10.9-8.5,28.4-8.5,39.7v25.7H51.2v38.3h26.5v133h49.6v-133h39.3l2.9-38.3h-42.2v-29.9C127.3,317.4,136.5,313.7,146.8,313.7z" />
+              </g>
+            </svg>
+          </a>
+          <a href="#">
+            <svg fill="#666f80" height="26px" width="26px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-143 145 512 512" xml:space="preserve">
+              <g>
+                <path
+                  d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M272.8,560.7
+                		c-20.8,20.8-44.9,37.1-71.8,48.4c-27.8,11.8-57.4,17.7-88,17.7c-30.5,0-60.1-6-88-17.7c-26.9-11.4-51.1-27.7-71.8-48.4
+                		c-20.8-20.8-37.1-44.9-48.4-71.8C-107,461.1-113,431.5-113,401s6-60.1,17.7-88c11.4-26.9,27.7-51.1,48.4-71.8
+                		c20.9-20.8,45-37.1,71.9-48.5C52.9,181,82.5,175,113,175s60.1,6,88,17.7c26.9,11.4,51.1,27.7,71.8,48.4
+                		c20.8,20.8,37.1,44.9,48.4,71.8c11.8,27.8,17.7,57.4,17.7,88c0,30.5-6,60.1-17.7,88C309.8,515.8,293.5,540,272.8,560.7z" />
+                <path
+                  d="M234.3,313.1c-10.2,6-21.4,10.4-33.4,12.8c-9.6-10.2-23.3-16.6-38.4-16.6c-29,0-52.6,23.6-52.6,52.6c0,4.1,0.4,8.1,1.4,12
+                		c-43.7-2.2-82.5-23.1-108.4-55c-4.5,7.8-7.1,16.8-7.1,26.5c0,18.2,9.3,34.3,23.4,43.8c-8.6-0.3-16.7-2.7-23.8-6.6v0.6
+                		c0,25.5,18.1,46.8,42.2,51.6c-4.4,1.2-9.1,1.9-13.9,1.9c-3.4,0-6.7-0.3-9.9-0.9c6.7,20.9,26.1,36.1,49.1,36.5
+                		c-18,14.1-40.7,22.5-65.3,22.5c-4.2,0-8.4-0.2-12.6-0.7c23.3,14.9,50.9,23.6,80.6,23.6c96.8,0,149.7-80.2,149.7-149.7
+                		c0-2.3,0-4.6-0.1-6.8c10.3-7.5,19.2-16.7,26.2-27.3c-9.4,4.2-19.6,7-30.2,8.3C222.1,335.7,230.4,325.4,234.3,313.1z" />
+              </g>
+            </svg>
+          </a>
+          <a href="#">
+            <svg fill="#666f80" height="26px" width="26px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-143 145 512 512" xml:space="preserve">
+              <g>
+                <path
+                  d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M272.8,560.7
+                      c-20.8,20.8-44.9,37.1-71.8,48.4c-27.8,11.8-57.4,17.7-88,17.7c-30.5,0-60.1-6-88-17.7c-26.9-11.4-51.1-27.7-71.8-48.4
+                      c-20.8-20.8-37.1-44.9-48.4-71.8C-107,461.1-113,431.5-113,401s6-60.1,17.7-88c11.4-26.9,27.7-51.1,48.4-71.8
+                      c20.9-20.8,45-37.1,71.9-48.5C52.9,181,82.5,175,113,175s60.1,6,88,17.7c26.9,11.4,51.1,27.7,71.8,48.4
+                      c20.8,20.8,37.1,44.9,48.4,71.8c11.8,27.8,17.7,57.4,17.7,88c0,30.5-6,60.1-17.7,88C309.8,515.8,293.5,540,272.8,560.7z" />
+                <path d="M-15,360v48.9c31.9,0,62.1,12.6,84.7,35.2c22.6,22.6,35.1,52.8,35.1,84.8v0.1h49.1c0-46.6-19-88.7-49.6-119.4
+                      C73.8,379,31.6,360.1-15,360z" />
+                <path d="M19,460.9c-9.4,0-17.8,3.8-24,10s-10,14.6-10,24c0,9.3,3.8,17.7,10,23.9c6.2,6.1,14.6,9.9,24,9.9s17.8-3.7,24-9.9
+                      s10-14.6,10-23.9c0-9.4-3.8-17.8-10-24C36.8,464.7,28.4,460.9,19,460.9z" />
+                <path
+                  d="M-14.9,273v48.9C99.2,322,191.9,414.9,192,529h49c0-70.6-28.7-134.5-75.1-180.9C119.6,301.7,55.7,273-14.9,273z" />
+              </g>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="box-7 flex text-xs pb-6">
+        <svg fill="#666f80" width="20px" height="20px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: none;
+              }
+            </style>
+          </defs>
+          <title>logo--xing</title>
+          <path
+            d="M11.42,8.29a1.25,1.25,0,0,0-1.13-.76h-4a.65.65,0,0,0-.55.25.63.63,0,0,0,0,.62l2.73,4.73v0L4.17,20.72a.6.6,0,0,0,0,.62.58.58,0,0,0,.52.28h4a1.22,1.22,0,0,0,1.1-.78l4.36-7.71S11.42,8.29,11.42,8.29Z"
+            transform="translate(0)" />
+          <path
+            d="M27.83,2.88a.65.65,0,0,0,0-.62A.61.61,0,0,0,27.3,2H23.22a1.19,1.19,0,0,0-1.08.77s-8.7,15.43-9,15.93l5.74,10.53A1.26,1.26,0,0,0,20,30h4a.59.59,0,0,0,.54-.26.62.62,0,0,0,0-.62l-5.69-10.4a0,0,0,0,1,0,0Z"
+            transform="translate(0)" />
+          <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32"
+            height="32" />
+        </svg>
+        <p class="text-sm">
+          <b>axiem </b> WEB DESIGN
+        </p>
+      </div>
+      <div class="box-8 flex text-xs">
+        <p class="">
+          © 2013 Ohio Valley Surgical Hospital All Rights Reserved
+        </p>
+      </div>
+      <div class="box-9 flex gap-x-4 text-xs">
+        <a href="#" class="underline">
+          Privacy Policy
+        </a>
+        <a href="#" class="underline">
+          Site Map
+        </a>
+        <a href="#" class="underline">
+          Disclaimer
+        </a>
+      </div>
+    </div>
+    </div>
+  </footer>
+
+
+  <script src="tailwind.config.js"></script>
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
